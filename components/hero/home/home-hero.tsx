@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function HomeHero() {
   return (
-    <div className="relative isolate overflow-hidden bg-white">
+    <div className="relative isolate overflow-hidden bg-neutral-100">
       <svg
         aria-hidden="true"
         className="absolute inset-0 -z-10 size-full mask-[radial-gradient(100%_100%_at_top_right,white,transparent)] stroke-gray-200"

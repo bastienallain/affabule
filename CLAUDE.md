@@ -50,6 +50,21 @@ pnpm run lint      # Run ESLint to check for code issues
 - `@splidejs/react-splide` - Used for sliders and carousels
 - `@headlessui/react` - Unstyled, accessible UI components
 - `@heroicons/react` - SVG icons
+- `next-seo` - SEO management library (installed but using Next.js native metadata API)
+
+## SEO Configuration
+
+**SEO Setup:**
+- Metadata configured in `/app/layout.tsx` using Next.js native Metadata API
+- Default SEO config also available in `/config/seo.config.ts` for reference
+- Sitemap automatically generated at `/sitemap.xml` via `/app/sitemap.ts`
+- Robots.txt configured at `/robots.txt` via `/app/robots.ts`
+
+**SEO Best Practices:**
+- Use `export const metadata` in page files to override default metadata
+- Title template: `%s | Affabule`
+- Default Open Graph image: `/og-image.jpg` (1200x630)
+- Theme color: `#B89D4F` (brand color)
 
 ## Development Guidelines
 
@@ -59,3 +74,4 @@ When modifying this codebase:
 3. Style components using Tailwind CSS utility classes
 4. Place new pages/routes in the `/app` directory following Next.js conventions
 5. Use the `@/` import alias for absolute imports from the project root
+6. For page-specific SEO, export a `metadata` object in the page file

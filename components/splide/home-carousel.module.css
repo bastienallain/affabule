@@ -1,0 +1,58 @@
+.exhibitionsCarousel :global(.splide__arrows) {
+  position: absolute;
+  bottom: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  width: auto;
+}
+
+.exhibitionsCarousel :global(.splide__arrow) {
+  position: static;
+  background: transparent;
+  border: 1px solid #B89D4F;
+  color: #B89D4F;
+  width: 40px;
+  height: 40px;
+  border-radius: 0;
+  transition: all 0.3s ease;
+  transform: none;
+  opacity: 1;
+}
+
+.exhibitionsCarousel :global(.splide__arrow:hover) {
+  background: #B89D4F;
+  color: white;
+  border-color: #B89D4F;
+}
+
+.exhibitionsCarousel :global(.splide__arrow svg) {
+  width: 14px;
+  height: 14px;
+}
+
+.exhibitionsCarousel :global(.splide__arrow:disabled) {
+  opacity: 0.4;
+  cursor: not-allowed;
+  border-color: #B89D4F;
+  color: #B89D4F;
+}
+
+.exhibitionsCarousel :global(.splide__arrow:disabled:hover) {
+  background: transparent;
+  color: #B89D4F;
+  border-color: #B89D4F;
+}
+
+@media (max-width: 640px) {
+  .exhibitionsCarousel :global(.splide__arrows) {
+    bottom: -50px;
+  }
+  
+  .exhibitionsCarousel :global(.splide__arrow) {
+    width: 36px;
+    height: 36px;
+  }
+}
