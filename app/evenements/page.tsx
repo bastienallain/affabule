@@ -1,5 +1,6 @@
 import { sanityFetch } from "@/lib/sanity/live";
 import { EVENTS_QUERY } from "@/lib/sanity/queries";
+import type { EVENTS_QUERYResult } from "@/lib/sanity/types";
 import { urlFor } from "@/lib/sanity/image";
 import Image from "next/image";
 import Link from "next/link";
@@ -15,6 +16,8 @@ export default async function EventsPage() {
     query: EVENTS_QUERY,
     tags: ['event'],
   });
+
+  const eventsData = events as EVENTS_QUERYResult;
 
   return (
     <div className="min-h-screen bg-gray-50 pt-24">
@@ -32,10 +35,10 @@ export default async function EventsPage() {
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {events.map((event) => (
+            {eventsData.map((event) => (
               <Link
                 key={event._id}
-                href={`/evenements/${event.slug.current}`}
+                href={`/evenements/${event.slug?.current || ''}`}
                 className="group"
               >
                 <article className="bg-white overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
@@ -44,7 +47,7 @@ export default async function EventsPage() {
                     <div className="relative aspect-[4/3] overflow-hidden">
                       <Image
                         src={urlFor(event.mainImage).width(600).height(450).url()}
-                        alt={event.mainImage.alt || event.title}
+                        alt={event.mainImage.alt || event.title || ''}
                         fill
                         className="object-cover group-hover:scale-105 transition-transform duration-300"
                         sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
@@ -56,7 +59,7 @@ export default async function EventsPage() {
                   <div className="p-6">
                     {/* Date */}
                     <div className="text-sm text-brand font-medium mb-2">
-                      {new Date(event.startDate).toLocaleDateString("en-US", {
+                      {event.startDate && new Date(event.startDate).toLocaleDateString("en-US", {
                         month: "long",
                         day: "numeric",
                         year: "numeric",

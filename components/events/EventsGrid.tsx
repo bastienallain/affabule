@@ -1,6 +1,7 @@
 import { urlFor } from "@/lib/sanity/image";
 import { sanityFetch } from "@/lib/sanity/live";
 import { FEATURED_EVENTS_QUERY } from "@/lib/sanity/queries";
+import type { Event } from "@/lib/sanity/types";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
@@ -15,15 +16,16 @@ export const EventsGrid = async ({ className }: EventsGridProps) => {
     tags: ["event"],
   });
 
-  if (!allEvents || allEvents.length === 0) {
+  const eventsData = allEvents as Event[] | null;
+
+  if (!eventsData || eventsData.length === 0) {
     return null;
   }
 
   // Limit to 2 featured events for homepage
-  const events = allEvents.slice(0, 2);
+  const events = eventsData.slice(0, 2);
 
-  // Take only the first featured event for hero display
-  const featuredEvent = events[0];
+  // We display all events in alternating layout
 
   return (
     <section className={cn("py-20", className)}>
@@ -31,7 +33,7 @@ export const EventsGrid = async ({ className }: EventsGridProps) => {
         {/* Header */}
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-serif text-black mb-4">
-            Événements à l'affiche
+            Événements à l&apos;affiche
           </h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
             Découvrez nos expositions et événements exceptionnels
@@ -40,7 +42,7 @@ export const EventsGrid = async ({ className }: EventsGridProps) => {
 
         {/* Events Grid */}
         <div className="space-y-16">
-          {events.map((event, index) => (
+          {events.map((event: Event, index: number) => (
             <div
               key={event._id}
               className={cn(
@@ -52,13 +54,13 @@ export const EventsGrid = async ({ className }: EventsGridProps) => {
               <div className="flex-1">
                 {event.mainImage && (
                   <Link
-                    href={`/evenements/${event.slug.current}`}
+                    href={`/evenements/${event.slug?.current || ''}`}
                     className="block group"
                   >
                     <div className="relative aspect-[4/3]">
                       <Image
                         src={urlFor(event.mainImage).width(800).height(600).url()}
-                        alt={event.mainImage.alt || event.title}
+                        alt={event.mainImage.alt || event.title || ''}
                         fill
                         className="object-cover shadow-xl transition-transform duration-300 group-hover:scale-105"
                         sizes="(max-width: 1024px) 100vw, 50vw"
@@ -74,7 +76,7 @@ export const EventsGrid = async ({ className }: EventsGridProps) => {
                 <div className="flex items-center gap-4">
                   <div className="w-12 h-px bg-brand"></div>
                   <span className="text-brand text-sm font-medium">
-                    {new Date(event.startDate).toLocaleDateString("fr-FR", {
+                    {event.startDate && new Date(event.startDate).toLocaleDateString("fr-FR", {
                       day: "numeric",
                       month: "long",
                       year: "numeric",
@@ -93,7 +95,7 @@ export const EventsGrid = async ({ className }: EventsGridProps) => {
                 </div>
 
                 {/* Title */}
-                <Link href={`/evenements/${event.slug.current}`}>
+                <Link href={`/evenements/${event.slug?.current || ''}`}>
                   <h3 className="text-3xl md:text-4xl font-serif text-black hover:text-brand transition-colors cursor-pointer">
                     {event.title}
                   </h3>
@@ -131,7 +133,7 @@ export const EventsGrid = async ({ className }: EventsGridProps) => {
 
                 {/* CTA */}
                 <Link
-                  href={`/evenements/${event.slug.current}`}
+                  href={`/evenements/${event.slug?.current || ''}`}
                   className="inline-block bg-brand text-white px-6 py-3 font-medium hover:bg-brand/90 transition-colors"
                 >
                   En savoir plus
@@ -142,7 +144,7 @@ export const EventsGrid = async ({ className }: EventsGridProps) => {
         </div>
 
         {/* View All Button */}
-        {allEvents.length > 2 && (
+        {eventsData.length > 2 && (
           <div className="text-center mt-16">
             <Link
               href="/evenements"
