@@ -4,6 +4,13 @@
 
 Le build s'est terminé avec succès après résolution de tous les problèmes TypeScript et ESLint.
 
+### 🔧 Dernière Correction Appliquée
+
+**Erreur Module Augmentation** : `Invalid module name in augmentation, module '@sanity/client' cannot be found`
+- **Problème** : Sanity TypeGen génère un module augmentation pour `@sanity/client` qui n'est pas installé
+- **Solution** : Changé `declare module "@sanity/client"` → `declare module "next-sanity"`
+- **Impact** : Types GROQ automatiques maintenant fonctionnels
+
 ### 📊 Métriques de Build Final
 
 ```
