@@ -59,6 +59,10 @@ export const FEATURED_EVENTS_QUERY = defineQuery(`*[_type == "event" && featured
   bookingUrl
 }`)
 
+export const EVENT_SLUGS_QUERY = defineQuery(`*[_type == "event" && defined(slug.current)] {
+  slug
+}`)
+
 export const EVENT_BY_SLUG_QUERY = defineQuery(`*[_type == "event" && slug.current == $slug][0] {
   _id,
   title,

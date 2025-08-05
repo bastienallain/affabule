@@ -179,3 +179,30 @@
 2025-08-05T04:36:22.678Z: Response status: 200
 2025-08-05T04:36:22.679Z: Response received successfully
 2025-08-05T04:36:22.679Z: ListResources response: {"resources":[{"uri":"WordPress://site-info","name":"site-info","description":"Provides general information about the WordPress site including site details, plugins, themes, and users","mimeType":"application/json"},{"uri":"WordPress://plugin-info","name":"plugin-info","description":"Provides detailed information about active WordPress plugins","mimeType":"application/json"},{"uri":"WordPress://theme-info","name":"theme-info","description":"Provides detailed information about the active WordPress theme","mimeType":"application/json"},{"uri":"WordPress://user-info","name":"user-info","description":"Provides detailed information about registered WordPress users and their roles","mimeType":"application/json"},{"uri":"WordPress://site-settings","name":"site-settings","description":"Provides detailed information about WordPress site settings","mimeType":"application/json"}],"nextCursor":""}
+2025-08-05T06:56:28.695Z: Request method: initialize
+2025-08-05T06:56:28.696Z: Request args: {}
+2025-08-05T06:56:28.697Z: Using JWT token authentication
+2025-08-05T06:56:28.697Z: Token length: 233
+2025-08-05T06:56:28.697Z: Environment: development
+2025-08-05T06:56:28.697Z: API URL: http://arte.local
+2025-08-05T06:56:28.697Z: Requesting URL: http://arte.local/?rest_route=/wp/v2/wpmcp
+2025-08-05T06:56:28.697Z: Sending request to WordPress API...
+2025-08-05T06:56:28.725Z: Error in wpRequest: fetch failed
+2025-08-05T07:11:46.275Z: Request method: initialize
+2025-08-05T07:11:46.277Z: Request args: {}
+2025-08-05T07:11:46.277Z: Using JWT token authentication
+2025-08-05T07:11:46.278Z: Token length: 233
+2025-08-05T07:11:46.278Z: Environment: development
+2025-08-05T07:11:46.278Z: API URL: http://arte.local
+2025-08-05T07:11:46.278Z: Requesting URL: http://arte.local/?rest_route=/wp/v2/wpmcp
+2025-08-05T07:11:46.278Z: Sending request to WordPress API...
+2025-08-05T07:11:46.306Z: Error in wpRequest: fetch failed
+2025-08-05T07:11:55.678Z: Request method: initialize
+2025-08-05T07:11:55.680Z: Request args: {}
+2025-08-05T07:11:55.681Z: Using JWT token authentication
+2025-08-05T07:11:55.681Z: Token length: 233
+2025-08-05T07:11:55.681Z: Environment: development
+2025-08-05T07:11:55.681Z: API URL: http://arte.local
+2025-08-05T07:11:55.681Z: Requesting URL: http://arte.local/?rest_route=/wp/v2/wpmcp
+2025-08-05T07:11:55.681Z: Sending request to WordPress API...
+2025-08-05T07:11:55.709Z: Error in wpRequest: fetch failed

@@ -11,8 +11,12 @@ const client = createClient({
 const token = process.env.SANITY_API_READ_TOKEN
 
 // Fallback to basic client if no token (for development)
-const fallbackSanityFetch = async ({ query, params, tags }: any) => {
-  return { data: await client.fetch(query, params) }
+const fallbackSanityFetch = async ({ query, params = {}, tags, perspective = 'published', stega }: any) => {
+  return { data: await client.fetch(query, params, {
+    perspective,
+    stega,
+    ...(tags && { next: { tags } })
+  }) }
 }
 
 const fallbackSanityLive = () => null
@@ -21,7 +25,10 @@ let sanityFetch: any
 let SanityLive: any
 
 if (!token) {
-  console.warn('Missing SANITY_API_READ_TOKEN - using basic client without live features')
+  // Only warn in development
+  if (process.env.NODE_ENV === 'development') {
+    console.warn('Missing SANITY_API_READ_TOKEN - using basic client without live features')
+  }
   sanityFetch = fallbackSanityFetch
   SanityLive = fallbackSanityLive
 } else {

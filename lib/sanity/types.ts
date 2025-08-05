@@ -452,6 +452,11 @@ export type FEATURED_EVENTS_QUERYResult = Array<{
   requiresReservation: boolean | null;
   bookingUrl: string | null;
 }>;
+// Variable: EVENT_SLUGS_QUERY
+// Query: *[_type == "event" && defined(slug.current)] {  slug}
+export type EVENT_SLUGS_QUERYResult = Array<{
+  slug: Slug | null;
+}>;
 // Variable: EVENT_BY_SLUG_QUERY
 // Query: *[_type == "event" && slug.current == $slug][0] {  _id,  title,  slug,  startDate,  endDate,  startTime,  endTime,  isAllDay,  location,  description,  fullDescription,  eventType,  mainImage,  "gallery": gallery[]{    "url": asset->url,    alt  },  categories[]->{    _id,    title,    slug  },  relatedArtists[]->{    _id,    name,    slug  },  capacity,  price,  requiresReservation,  bookingUrl,  featured}
 export type EVENT_BY_SLUG_QUERYResult = {
@@ -524,6 +529,7 @@ declare module "@sanity/client" {
   interface SanityQueries {
     "*[_type == \"event\" && defined(slug.current)] | order(startDate asc) {\n  _id,\n  title,\n  slug,\n  startDate,\n  endDate,\n  startTime,\n  endTime,\n  isAllDay,\n  location,\n  description,\n  eventType,\n  mainImage,\n  categories[]->{\n    _id,\n    title,\n    slug\n  },\n  relatedArtists[]->{\n    _id,\n    name,\n    slug\n  },\n  capacity,\n  price,\n  requiresReservation,\n  bookingUrl,\n  featured\n}": EVENTS_QUERYResult;
     "*[_type == \"event\" && featured == true && defined(slug.current)] | order(startDate asc) {\n  _id,\n  title,\n  slug,\n  startDate,\n  endDate,\n  startTime,\n  endTime,\n  isAllDay,\n  location,\n  description,\n  eventType,\n  mainImage,\n  categories[]->{\n    _id,\n    title,\n    slug\n  },\n  relatedArtists[]->{\n    _id,\n    name,\n    slug\n  },\n  capacity,\n  price,\n  requiresReservation,\n  bookingUrl\n}": FEATURED_EVENTS_QUERYResult;
+    "*[_type == \"event\" && defined(slug.current)] {\n  slug\n}": EVENT_SLUGS_QUERYResult;
     "*[_type == \"event\" && slug.current == $slug][0] {\n  _id,\n  title,\n  slug,\n  startDate,\n  endDate,\n  startTime,\n  endTime,\n  isAllDay,\n  location,\n  description,\n  fullDescription,\n  eventType,\n  mainImage,\n  \"gallery\": gallery[]{\n    \"url\": asset->url,\n    alt\n  },\n  categories[]->{\n    _id,\n    title,\n    slug\n  },\n  relatedArtists[]->{\n    _id,\n    name,\n    slug\n  },\n  capacity,\n  price,\n  requiresReservation,\n  bookingUrl,\n  featured\n}": EVENT_BY_SLUG_QUERYResult;
   }
 }
