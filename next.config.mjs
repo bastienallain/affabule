@@ -4,7 +4,18 @@ const nextConfig = {
     formats: ['image/webp', 'image/avif'],
     minimumCacheTTL: 2678400, // 31 days
   }, images: {
-    remotePatterns: [new URL('https://tailwindcss.com/**')],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "tailwindcss.com",
+        pathname: "/**",
+      },
+      {
+        protocol: "https", 
+        hostname: "cdn.sanity.io",
+        pathname: "/images/**",
+      },
+    ],
   },
   experimental: {
     optimizePackageImports: ['@headlessui/react', '@heroicons/react', '@splidejs/react-splide'],
