@@ -1,7 +1,7 @@
 import { urlFor } from "@/lib/sanity/image";
 import { sanityFetch } from "@/lib/sanity/live";
 import { EVENT_BY_SLUG_QUERY, EVENT_SLUGS_QUERY } from "@/lib/sanity/queries";
-import type { Event } from "@/lib/sanity/types";
+import type { EVENT_BY_SLUG_QUERYResult, EVENT_SLUGS_QUERYResult } from "@/lib/sanity/types";
 import { PortableText } from "@portabletext/react";
 import type { Metadata } from "next";
 import Image from "next/image";
@@ -20,7 +20,7 @@ export async function generateStaticParams() {
     stega: false,
   });
 
-  return (events as Event[]).map((event) => ({
+  return (events as EVENT_SLUGS_QUERYResult).map((event) => ({
     slug: event.slug?.current || '',
   }));
 }
@@ -36,7 +36,7 @@ export async function generateMetadata({
     stega: false,
   });
 
-  const eventData = event as Event | null;
+  const eventData = event as EVENT_BY_SLUG_QUERYResult;
 
   if (!eventData) {
     return {};
@@ -49,7 +49,7 @@ export async function generateMetadata({
       title: eventData.title,
       description: eventData.description,
       images: eventData.mainImage
-        ? [urlFor(eventData.mainImage as any).width(1200).height(630).url()]
+        ? [urlFor(eventData.mainImage!).width(1200).height(630).url()]
         : [],
     },
   };
@@ -63,7 +63,7 @@ export default async function EventPage({ params }: PageProps) {
     tags: ["event"],
   });
 
-  const eventData = event as Event | null;
+  const eventData = event as EVENT_BY_SLUG_QUERYResult;
 
   if (!eventData) {
     notFound();
@@ -133,7 +133,7 @@ export default async function EventPage({ params }: PageProps) {
               {eventData.mainImage && (
                 <div className="relative group">
                   <Image
-                    src={urlFor(eventData.mainImage as any).width(800).height(1000).url()}
+                    src={urlFor(eventData.mainImage!).width(800).height(1000).url()}
                     alt={eventData.mainImage.alt || eventData.title || ''}
                     width={800}
                     height={1000}
