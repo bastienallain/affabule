@@ -54,13 +54,13 @@ export const EventsGrid = async ({ className }: EventsGridProps) => {
               <div className="flex-1">
                 {event.mainImage && (
                   <Link
-                    href={`/evenements/${event.slug.current}`}
+                    href={`/evenements/${event.slug?.current || ''}`}
                     className="block group"
                   >
                     <div className="relative aspect-[4/3]">
                       <Image
                         src={urlFor(event.mainImage).width(800).height(600).url()}
-                        alt={event.mainImage.alt || event.title}
+                        alt={event.mainImage.alt || event.title || ''}
                         fill
                         className="object-cover shadow-xl transition-transform duration-300 group-hover:scale-105"
                         sizes="(max-width: 1024px) 100vw, 50vw"
@@ -76,7 +76,7 @@ export const EventsGrid = async ({ className }: EventsGridProps) => {
                 <div className="flex items-center gap-4">
                   <div className="w-12 h-px bg-brand"></div>
                   <span className="text-brand text-sm font-medium">
-                    {new Date(event.startDate).toLocaleDateString("fr-FR", {
+                    {event.startDate && new Date(event.startDate).toLocaleDateString("fr-FR", {
                       day: "numeric",
                       month: "long",
                       year: "numeric",
@@ -95,7 +95,7 @@ export const EventsGrid = async ({ className }: EventsGridProps) => {
                 </div>
 
                 {/* Title */}
-                <Link href={`/evenements/${event.slug.current}`}>
+                <Link href={`/evenements/${event.slug?.current || ''}`}>
                   <h3 className="text-3xl md:text-4xl font-serif text-black hover:text-brand transition-colors cursor-pointer">
                     {event.title}
                   </h3>
@@ -133,7 +133,7 @@ export const EventsGrid = async ({ className }: EventsGridProps) => {
 
                 {/* CTA */}
                 <Link
-                  href={`/evenements/${event.slug.current}`}
+                  href={`/evenements/${event.slug?.current || ''}`}
                   className="inline-block bg-brand text-white px-6 py-3 font-medium hover:bg-brand/90 transition-colors"
                 >
                   En savoir plus

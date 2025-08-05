@@ -43,13 +43,13 @@ export async function generateMetadata({
   }
 
   return {
-    title: eventData.title,
-    description: eventData.description,
+    title: eventData.title || undefined,
+    description: eventData.description || undefined,
     openGraph: {
-      title: eventData.title,
-      description: eventData.description,
+      title: eventData.title || undefined,
+      description: eventData.description || undefined,
       images: eventData.mainImage
-        ? [urlFor(eventData.mainImage!).width(1200).height(630).url()]
+        ? [urlFor(eventData.mainImage).width(1200).height(630).url()]
         : [],
     },
   };
@@ -133,7 +133,7 @@ export default async function EventPage({ params }: PageProps) {
               {eventData.mainImage && (
                 <div className="relative group">
                   <Image
-                    src={urlFor(eventData.mainImage!).width(800).height(1000).url()}
+                    src={urlFor(eventData.mainImage).width(800).height(1000).url()}
                     alt={eventData.mainImage.alt || eventData.title || ''}
                     width={800}
                     height={1000}

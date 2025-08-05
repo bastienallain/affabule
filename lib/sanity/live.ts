@@ -1,4 +1,5 @@
 import { createClient, defineLive } from 'next-sanity'
+import type React from 'react'
 
 const client = createClient({
   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!,
@@ -30,7 +31,7 @@ const fallbackSanityFetch = async ({ query, params = {}, tags, perspective = 'pu
 const fallbackSanityLive = () => null
 
 type SanityFetchFunction = (params: SanityFetchParams) => Promise<{ data: unknown }>
-type SanityLiveComponent = () => null
+type SanityLiveComponent = (() => null) | React.ComponentType<Record<string, unknown>>
 
 let sanityFetch: SanityFetchFunction
 let SanityLive: SanityLiveComponent
