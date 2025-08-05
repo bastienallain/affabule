@@ -1,0 +1,181 @@
+2025-08-05T03:56:59.393Z: Request method: initialize
+2025-08-05T03:56:59.395Z: Request args: {}
+2025-08-05T03:56:59.395Z: Using JWT token authentication
+2025-08-05T03:56:59.395Z: Token length: 245
+2025-08-05T03:56:59.395Z: Environment: development
+2025-08-05T03:56:59.396Z: API URL: http://affabuloscope.local
+2025-08-05T03:56:59.396Z: Requesting URL: http://affabuloscope.local/?rest_route=/wp/v2/wpmcp
+2025-08-05T03:56:59.396Z: Sending request to WordPress API...
+2025-08-05T03:57:01.108Z: Response status: 200
+2025-08-05T03:57:01.110Z: Response received successfully
+2025-08-05T03:57:01.111Z: MCP server connected to transport successfully
+2025-08-05T03:57:01.115Z: Received ListTools request: {"method":"tools/list"}
+2025-08-05T03:57:01.115Z: Processing ListToolsRequest
+2025-08-05T03:57:01.115Z: {"method":"tools/list"}
+2025-08-05T03:57:01.115Z: Request method: tools/list
+2025-08-05T03:57:01.115Z: Request args: {}
+2025-08-05T03:57:01.115Z: Using JWT token authentication
+2025-08-05T03:57:01.115Z: Token length: 245
+2025-08-05T03:57:01.115Z: Environment: development
+2025-08-05T03:57:01.116Z: API URL: http://affabuloscope.local
+2025-08-05T03:57:01.116Z: Requesting URL: http://affabuloscope.local/?rest_route=/wp/v2/wpmcp
+2025-08-05T03:57:01.116Z: Sending request to WordPress API...
+2025-08-05T03:57:01.116Z: Received ListPrompts request: {"method":"prompts/list"}
+2025-08-05T03:57:01.116Z: Processing ListPromptsRequest
+2025-08-05T03:57:01.117Z: {"method":"prompts/list"}
+2025-08-05T03:57:01.117Z: Request method: prompts/list
+2025-08-05T03:57:01.117Z: Request args: {}
+2025-08-05T03:57:01.117Z: Using JWT token authentication
+2025-08-05T03:57:01.117Z: Token length: 245
+2025-08-05T03:57:01.117Z: Environment: development
+2025-08-05T03:57:01.117Z: API URL: http://affabuloscope.local
+2025-08-05T03:57:01.117Z: Requesting URL: http://affabuloscope.local/?rest_route=/wp/v2/wpmcp
+2025-08-05T03:57:01.117Z: Sending request to WordPress API...
+2025-08-05T03:57:01.118Z: Received ListResources request: {"method":"resources/list"}
+2025-08-05T03:57:01.118Z: Processing ListResourcesRequest
+2025-08-05T03:57:01.118Z: {"method":"resources/list"}
+2025-08-05T03:57:01.118Z: Request method: resources/list
+2025-08-05T03:57:01.118Z: Request args: {}
+2025-08-05T03:57:01.118Z: Using JWT token authentication
+2025-08-05T03:57:01.118Z: Token length: 245
+2025-08-05T03:57:01.118Z: Environment: development
+2025-08-05T03:57:01.118Z: API URL: http://affabuloscope.local
+2025-08-05T03:57:01.118Z: Requesting URL: http://affabuloscope.local/?rest_route=/wp/v2/wpmcp
+2025-08-05T03:57:01.119Z: Sending request to WordPress API...
+2025-08-05T03:57:02.660Z: Response status: 200
+2025-08-05T03:57:02.661Z: Response received successfully
+2025-08-05T03:57:02.661Z: ListTools response: {"tools":[{"name":"get_site_info","description":"Provides detailed information about the WordPress site like site name, url, description, admin email, plugins, themes, users, and more","type":"read","inputSchema":{"type":"object"},"annotations":{"title":"Get Site Info","readOnlyHint":true,"openWorldHint":false}},{"name":"wp_get_media_file","description":"Get the actual file content (blob) of a WordPress media item","type":"read","inputSchema":{"type":"object","properties":{"id":{"type":"integer","description":"The ID of the media item"},"size":{"type":"string","description":"Optional. The size of the image to retrieve (thumbnail, medium, large, full). Defaults to full/original size."}},"required":["id"]},"annotations":{"title":"Get Media File","readOnlyHint":true,"openWorldHint":false}},{"name":"list_api_functions","description":"List all available WordPress REST API endpoints that support CRUD operations (Create, Read, Update, Delete). Use this first to discover what API functions are available before inspecting or calling them.","type":"read","inputSchema":{"type":"object"},"annotations":{"title":"List API Functions","readOnlyHint":true,"openWorldHint":false}},{"name":"get_function_details","description":"Get detailed metadata for a specific WordPress REST API endpoint and HTTP method. Includes available parameters, required fields, authentication needs, and expected response structure. Use this to get the details of a specific function before calling it.","type":"read","inputSchema":{"type":"object","properties":{"route":{"type":"string","description":"The REST API route (e.g., \"/wp/v2/posts\", \"/wp/v2/users\")"},"method":{"type":"string","enum":["GET","POST","PATCH","DELETE"],"description":"The HTTP method to retrieve metadata for"}},"required":["route","method"]},"annotations":{"title":"Get Function Details","readOnlyHint":true,"openWorldHint":false}},{"name":"run_api_function","description":"Execute a specific WordPress REST API function by providing the endpoint route, HTTP method, and any required parameters or request body. Supports standard CRUD operations: GET (read), POST (create), PATCH (update), DELETE (remove).","type":"action","inputSchema":{"type":"object","properties":{"route":{"type":"string","description":"The REST API route (e.g., \"/wp/v2/posts\", \"/wp/v2/users/123\")"},"method":{"type":"string","enum":["GET","POST","PATCH","DELETE"],"description":"The HTTP method to use: GET, POST, PATCH, or DELETE"},"data":{"type":"object","description":"Payload for POST or PATCH requests. Not required for GET or DELETE."}},"required":["route","method"]},"annotations":{"title":"Run API Function","readOnlyHint":false,"destructiveHint":true,"idempotentHint":false,"openWorldHint":false}}]}
+2025-08-05T03:57:02.682Z: Response status: 200
+2025-08-05T03:57:02.683Z: Response received successfully
+2025-08-05T03:57:02.683Z: ListResources response: {"resources":[{"uri":"WordPress://site-info","name":"site-info","description":"Provides general information about the WordPress site including site details, plugins, themes, and users","mimeType":"application/json"},{"uri":"WordPress://plugin-info","name":"plugin-info","description":"Provides detailed information about active WordPress plugins","mimeType":"application/json"},{"uri":"WordPress://theme-info","name":"theme-info","description":"Provides detailed information about the active WordPress theme","mimeType":"application/json"},{"uri":"WordPress://user-info","name":"user-info","description":"Provides detailed information about registered WordPress users and their roles","mimeType":"application/json"},{"uri":"WordPress://site-settings","name":"site-settings","description":"Provides detailed information about WordPress site settings","mimeType":"application/json"}],"nextCursor":""}
+2025-08-05T03:57:04.287Z: Response status: 200
+2025-08-05T03:57:04.288Z: Response received successfully
+2025-08-05T03:57:04.288Z: ListPrompts response: {"prompts":[{"name":"get-site-info","description":"Get detailed information about the WordPress site","arguments":[{"name":"info_type","description":"The type of information to retrieve (e.g., general, plugins, theme, users, settings)","required":false,"type":"string"}]},{"name":"analyze-sales","description":"Analyze WooCommerce sales data","arguments":[{"name":"time_span","description":"The time period to analyze (e.g., last_7_days, last_30_days, last_month, last_quarter, last_year)","required":true,"type":"string"}]}]}
+2025-08-05T04:35:20.733Z: Request method: initialize
+2025-08-05T04:35:20.735Z: Request args: {}
+2025-08-05T04:35:20.735Z: Using JWT token authentication
+2025-08-05T04:35:20.735Z: Token length: 245
+2025-08-05T04:35:20.735Z: Environment: development
+2025-08-05T04:35:20.735Z: API URL: http://affabuloscope.local
+2025-08-05T04:35:20.735Z: Requesting URL: http://affabuloscope.local/?rest_route=/wp/v2/wpmcp
+2025-08-05T04:35:20.736Z: Sending request to WordPress API...
+2025-08-05T04:35:20.769Z: Response status: 405
+2025-08-05T04:35:20.770Z: Error response: <html>
+<head><title>405 Not Allowed</title></head>
+<body>
+<center><h1>405 Not Allowed</h1></center>
+<hr><center>nginx/1.26.1</center>
+</body>
+</html>
+
+2025-08-05T04:35:20.771Z: Error in wpRequest: WordPress API error (405): <html>
+<head><title>405 Not Allowed</title></head>
+<body>
+<center><h1>405 Not Allowed</h1></center>
+<hr><center>nginx/1.26.1</center>
+</body>
+</html>
+
+2025-08-05T04:35:55.476Z: Request method: initialize
+2025-08-05T04:35:55.477Z: Request args: {}
+2025-08-05T04:35:55.477Z: Using JWT token authentication
+2025-08-05T04:35:55.478Z: Token length: 245
+2025-08-05T04:35:55.478Z: Environment: development
+2025-08-05T04:35:55.478Z: API URL: http://affabuloscope.local
+2025-08-05T04:35:55.478Z: Requesting URL: http://affabuloscope.local/?rest_route=/wp/v2/wpmcp
+2025-08-05T04:35:55.478Z: Sending request to WordPress API...
+2025-08-05T04:35:55.512Z: Response status: 405
+2025-08-05T04:35:55.513Z: Error response: <html>
+<head><title>405 Not Allowed</title></head>
+<body>
+<center><h1>405 Not Allowed</h1></center>
+<hr><center>nginx/1.26.1</center>
+</body>
+</html>
+
+2025-08-05T04:35:55.513Z: Error in wpRequest: WordPress API error (405): <html>
+<head><title>405 Not Allowed</title></head>
+<body>
+<center><h1>405 Not Allowed</h1></center>
+<hr><center>nginx/1.26.1</center>
+</body>
+</html>
+
+2025-08-05T04:35:56.754Z: Request method: initialize
+2025-08-05T04:35:56.756Z: Request args: {}
+2025-08-05T04:35:56.756Z: Using JWT token authentication
+2025-08-05T04:35:56.756Z: Token length: 245
+2025-08-05T04:35:56.756Z: Environment: development
+2025-08-05T04:35:56.757Z: API URL: http://affabuloscope.local
+2025-08-05T04:35:56.757Z: Requesting URL: http://affabuloscope.local/?rest_route=/wp/v2/wpmcp
+2025-08-05T04:35:56.757Z: Sending request to WordPress API...
+2025-08-05T04:35:56.790Z: Response status: 405
+2025-08-05T04:35:56.792Z: Error response: <html>
+<head><title>405 Not Allowed</title></head>
+<body>
+<center><h1>405 Not Allowed</h1></center>
+<hr><center>nginx/1.26.1</center>
+</body>
+</html>
+
+2025-08-05T04:35:56.792Z: Error in wpRequest: WordPress API error (405): <html>
+<head><title>405 Not Allowed</title></head>
+<body>
+<center><h1>405 Not Allowed</h1></center>
+<hr><center>nginx/1.26.1</center>
+</body>
+</html>
+
+2025-08-05T04:36:20.589Z: Request method: initialize
+2025-08-05T04:36:20.591Z: Request args: {}
+2025-08-05T04:36:20.591Z: Using JWT token authentication
+2025-08-05T04:36:20.591Z: Token length: 233
+2025-08-05T04:36:20.591Z: Environment: development
+2025-08-05T04:36:20.591Z: API URL: http://arte.local
+2025-08-05T04:36:20.591Z: Requesting URL: http://arte.local/?rest_route=/wp/v2/wpmcp
+2025-08-05T04:36:20.591Z: Sending request to WordPress API...
+2025-08-05T04:36:21.364Z: Response status: 200
+2025-08-05T04:36:21.366Z: Response received successfully
+2025-08-05T04:36:21.366Z: MCP server connected to transport successfully
+2025-08-05T04:36:21.370Z: Received ListTools request: {"method":"tools/list"}
+2025-08-05T04:36:21.370Z: Processing ListToolsRequest
+2025-08-05T04:36:21.370Z: {"method":"tools/list"}
+2025-08-05T04:36:21.371Z: Request method: tools/list
+2025-08-05T04:36:21.371Z: Request args: {}
+2025-08-05T04:36:21.371Z: Using JWT token authentication
+2025-08-05T04:36:21.371Z: Token length: 233
+2025-08-05T04:36:21.371Z: Environment: development
+2025-08-05T04:36:21.371Z: API URL: http://arte.local
+2025-08-05T04:36:21.371Z: Requesting URL: http://arte.local/?rest_route=/wp/v2/wpmcp
+2025-08-05T04:36:21.371Z: Sending request to WordPress API...
+2025-08-05T04:36:21.372Z: Received ListPrompts request: {"method":"prompts/list"}
+2025-08-05T04:36:21.372Z: Processing ListPromptsRequest
+2025-08-05T04:36:21.372Z: {"method":"prompts/list"}
+2025-08-05T04:36:21.372Z: Request method: prompts/list
+2025-08-05T04:36:21.372Z: Request args: {}
+2025-08-05T04:36:21.372Z: Using JWT token authentication
+2025-08-05T04:36:21.372Z: Token length: 233
+2025-08-05T04:36:21.372Z: Environment: development
+2025-08-05T04:36:21.372Z: API URL: http://arte.local
+2025-08-05T04:36:21.373Z: Requesting URL: http://arte.local/?rest_route=/wp/v2/wpmcp
+2025-08-05T04:36:21.373Z: Sending request to WordPress API...
+2025-08-05T04:36:21.373Z: Received ListResources request: {"method":"resources/list"}
+2025-08-05T04:36:21.373Z: Processing ListResourcesRequest
+2025-08-05T04:36:21.373Z: {"method":"resources/list"}
+2025-08-05T04:36:21.373Z: Request method: resources/list
+2025-08-05T04:36:21.373Z: Request args: {}
+2025-08-05T04:36:21.374Z: Using JWT token authentication
+2025-08-05T04:36:21.374Z: Token length: 233
+2025-08-05T04:36:21.374Z: Environment: development
+2025-08-05T04:36:21.374Z: API URL: http://arte.local
+2025-08-05T04:36:21.374Z: Requesting URL: http://arte.local/?rest_route=/wp/v2/wpmcp
+2025-08-05T04:36:21.374Z: Sending request to WordPress API...
+2025-08-05T04:36:22.030Z: Response status: 200
+2025-08-05T04:36:22.031Z: Response status: 200
+2025-08-05T04:36:22.032Z: Response received successfully
+2025-08-05T04:36:22.032Z: ListPrompts response: {"prompts":[{"name":"get-site-info","description":"Get detailed information about the WordPress site","arguments":[{"name":"info_type","description":"The type of information to retrieve (e.g., general, plugins, theme, users, settings)","required":false,"type":"string"}]},{"name":"analyze-sales","description":"Analyze WooCommerce sales data","arguments":[{"name":"time_span","description":"The time period to analyze (e.g., last_7_days, last_30_days, last_month, last_quarter, last_year)","required":true,"type":"string"}]}]}
+2025-08-05T04:36:22.033Z: Response received successfully
+2025-08-05T04:36:22.033Z: ListTools response: {"tools":[{"name":"get_site_info","description":"Provides detailed information about the WordPress site like site name, url, description, admin email, plugins, themes, users, and more","type":"read","inputSchema":{"type":"object"},"annotations":{"title":"Get Site Info","readOnlyHint":true,"openWorldHint":false}},{"name":"wp_get_media_file","description":"Get the actual file content (blob) of a WordPress media item","type":"read","inputSchema":{"type":"object","properties":{"id":{"type":"integer","description":"The ID of the media item"},"size":{"type":"string","description":"Optional. The size of the image to retrieve (thumbnail, medium, large, full). Defaults to full/original size."}},"required":["id"]},"annotations":{"title":"Get Media File","readOnlyHint":true,"openWorldHint":false}},{"name":"list_api_functions","description":"List all available WordPress REST API endpoints that support CRUD operations (Create, Read, Update, Delete). Use this first to discover what API functions are available before inspecting or calling them.","type":"read","inputSchema":{"type":"object"},"annotations":{"title":"List API Functions","readOnlyHint":true,"openWorldHint":false}},{"name":"get_function_details","description":"Get detailed metadata for a specific WordPress REST API endpoint and HTTP method. Includes available parameters, required fields, authentication needs, and expected response structure. Use this to get the details of a specific function before calling it.","type":"read","inputSchema":{"type":"object","properties":{"route":{"type":"string","description":"The REST API route (e.g., \"/wp/v2/posts\", \"/wp/v2/users\")"},"method":{"type":"string","enum":["GET","POST","PATCH","DELETE"],"description":"The HTTP method to retrieve metadata for"}},"required":["route","method"]},"annotations":{"title":"Get Function Details","readOnlyHint":true,"openWorldHint":false}},{"name":"run_api_function","description":"Execute a specific WordPress REST API function by providing the endpoint route, HTTP method, and any required parameters or request body. Supports standard CRUD operations: GET (read), POST (create), PATCH (update), DELETE (remove).","type":"action","inputSchema":{"type":"object","properties":{"route":{"type":"string","description":"The REST API route (e.g., \"/wp/v2/posts\", \"/wp/v2/users/123\")"},"method":{"type":"string","enum":["GET","POST","PATCH","DELETE"],"description":"The HTTP method to use: GET, POST, PATCH, or DELETE"},"data":{"type":"object","description":"Payload for POST or PATCH requests. Not required for GET or DELETE."}},"required":["route","method"]},"annotations":{"title":"Run API Function","readOnlyHint":false,"destructiveHint":true,"idempotentHint":false,"openWorldHint":false}}]}
+2025-08-05T04:36:22.678Z: Response status: 200
+2025-08-05T04:36:22.679Z: Response received successfully
+2025-08-05T04:36:22.679Z: ListResources response: {"resources":[{"uri":"WordPress://site-info","name":"site-info","description":"Provides general information about the WordPress site including site details, plugins, themes, and users","mimeType":"application/json"},{"uri":"WordPress://plugin-info","name":"plugin-info","description":"Provides detailed information about active WordPress plugins","mimeType":"application/json"},{"uri":"WordPress://theme-info","name":"theme-info","description":"Provides detailed information about the active WordPress theme","mimeType":"application/json"},{"uri":"WordPress://user-info","name":"user-info","description":"Provides detailed information about registered WordPress users and their roles","mimeType":"application/json"},{"uri":"WordPress://site-settings","name":"site-settings","description":"Provides detailed information about WordPress site settings","mimeType":"application/json"}],"nextCursor":""}

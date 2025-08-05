@@ -1,3 +1,4 @@
+import { EventsGrid } from "@/components/events/EventsGrid";
 import HomeHero from "@/components/hero/home/home-hero";
 import HomeCarousel from "@/components/splide/home-carousel";
 import Image from "next/image";
@@ -6,6 +7,7 @@ export default function Home() {
   return (
     <div>
       <HomeHero /> <HomeCarousel />
+      <EventsGrid />
       <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
         <a
           className="flex items-center gap-2 hover:underline hover:underline-offset-4"

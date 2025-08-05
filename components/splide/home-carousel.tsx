@@ -4,9 +4,10 @@ import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css";
 import Image from "next/image";
 import Link from "next/link";
+import { SpecialTitle } from "../ui/SpecialTitle";
 import styles from "./home-carousel.module.css";
 
-// Donn�es d'exemple pour les expositions
+// Données d'exemple pour les expositions
 const exhibitions = [
   {
     id: 1,
@@ -26,7 +27,7 @@ const exhibitions = [
   },
   {
     id: 3,
-    title: "L�gendes Urbaines",
+    title: "Légendes Urbaines",
     subtitle: "Mythes Contemporains",
     date: "22 MAR 2025",
     image: "/une-89-889x1170-1.jpg.webp",
@@ -34,7 +35,7 @@ const exhibitions = [
   },
   {
     id: 4,
-    title: "R�cits de l'Imaginaire",
+    title: "Récits de l'Imaginaire",
     subtitle: "Voyages Fantastiques",
     date: "5 AVR 2025",
     image: "/une-89-889x1170-1.jpg.webp",
@@ -43,7 +44,7 @@ const exhibitions = [
   {
     id: 5,
     title: "Histoires Interactives",
-    subtitle: "L'Avenir du R�cit",
+    subtitle: "L'Avenir du Récit",
     date: "12 AVR 2025",
     image: "/une-89-889x1170-1.jpg.webp",
     slug: "histoires-interactives",
@@ -76,16 +77,20 @@ export default function HomeCarousel() {
   return (
     <section className="py-16 lg:py-24 bg-gray-50">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        {/* Titre centr� avec ligne dor�e */}
+        {/* Titre centré avec ligne dorée */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl lg:text-5xl font-light text-gray-900 mb-4 uppercase">
+          <SpecialTitle
+            level="h2"
+            align="center"
+            lineHeight="lg"
+            className="text-4xl lg:text-5xl font-light text-gray-900 mb-4 uppercase"
+          >
             Exhibitions
-          </h2>
-          <div className="w-12 h-0.5 bg-brand mx-auto"></div>
+          </SpecialTitle>
         </div>
 
         {/* Carousel Splide */}
-        <div className="relative pb-20">
+        <div className="relative pt-34 pb-20">
           <Splide
             options={splideOptions}
             className={styles.exhibitionsCarousel}
@@ -96,7 +101,7 @@ export default function HomeCarousel() {
                   href={`/exhibitions/${exhibition.slug}`}
                   className="group"
                 >
-                  <div className="bg-white overflow-hidden transition-all duration-300 hover:shadow-xl">
+                  <div className=" overflow-hidden transition-all duration-300">
                     {/* Image de l'exposition */}
                     <div className="relative overflow-hidden aspect-[4/5]">
                       <Image

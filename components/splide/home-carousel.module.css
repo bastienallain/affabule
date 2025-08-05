@@ -31,6 +31,7 @@
 .exhibitionsCarousel :global(.splide__arrow svg) {
   width: 14px;
   height: 14px;
+  fill: currentColor;
 }
 
 .exhibitionsCarousel :global(.splide__arrow:disabled) {
