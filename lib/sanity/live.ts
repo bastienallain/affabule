@@ -10,8 +10,16 @@ const client = createClient({
 
 const token = process.env.SANITY_API_READ_TOKEN
 
+interface SanityFetchParams {
+  query: string
+  params?: Record<string, unknown>
+  tags?: string[]
+  perspective?: 'published' | 'previewDrafts'
+  stega?: boolean
+}
+
 // Fallback to basic client if no token (for development)
-const fallbackSanityFetch = async ({ query, params = {}, tags, perspective = 'published', stega }: any) => {
+const fallbackSanityFetch = async ({ query, params = {}, tags, perspective = 'published', stega }: SanityFetchParams) => {
   return { data: await client.fetch(query, params, {
     perspective,
     stega,
@@ -21,8 +29,11 @@ const fallbackSanityFetch = async ({ query, params = {}, tags, perspective = 'pu
 
 const fallbackSanityLive = () => null
 
-let sanityFetch: any
-let SanityLive: any
+type SanityFetchFunction = (params: SanityFetchParams) => Promise<{ data: unknown }>
+type SanityLiveComponent = () => null
+
+let sanityFetch: SanityFetchFunction
+let SanityLive: SanityLiveComponent
 
 if (!token) {
   // Only warn in development
